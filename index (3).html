@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Yassine Marzouk | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --darker: #020617;
+            --card: #1e293b;
+            --card-hover: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                var(--darker);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-frame {
+            width: 350px;
+            height: 350px;
+            border-radius: 30px;
+            background: var(--gradient);
+            padding: 5px;
+            transform: rotate(5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 26px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: rotate(5deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(5deg) translateY(-20px);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: var(--card-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-date {
+            text-align: right;
+            padding-right: 30px;
+            border-right: 3px solid var(--primary);
+            position: relative;
+        }
+
+        .timeline-date::after {
+            content: '';
+            position: absolute;
+            right: -9px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: var(--gradient);
+            border-radius: 50%;
+        }
+
+        .timeline-date span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h4 {
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .timeline-content li {
+            margin-bottom: 5px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category h3 i {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-item .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 10px;
+            animation: skillFill 1.5s ease-out forwards;
+            width: 0;
+        }
+
+        @keyframes skillFill {
+            to {
+                width: var(--progress);
+            }
+        }
+
+        /* Languages */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .language-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .language-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .language-card h4 {
+            margin-bottom: 5px;
+        }
+
+        .language-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .contact-item i {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-item h4 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            font-weight: 500;
+        }
+
+        .contact-item a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-frame {
+                width: 280px;
+                height: 280px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-date {
+                text-align: left;
+                border-right: none;
+                border-left: 3px solid var(--primary);
+                padding-left: 20px;
+                padding-right: 0;
+            }
+
+            .timeline-date::after {
+                left: -9px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Mohamed Yassine Marzouk</h1>
+                    <p class="subtitle">🎓 Master en Leadership Managérial</p>
+                    <p>Licencié en économie et gestion, motivé et orienté résultats. Je recherche une opportunité
+                        professionnelle permettant de développer mes compétences et contribuer efficacement au sein
+                        d'une organisation dynamique.</p>
+                    <div class="hero-buttons">
+                        <a href="mailto:myassinemarzouk01@gmail.com" class="btn btn-primary"><i
+                                class="fas fa-envelope"></i> Contact</a>
+                        <a href="tel:+212647521053" class="btn btn-outline"><i class="fas fa-phone"></i> Appeler</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-frame">
+                        <img src="https://i.imgur.com/aRrVCCE.png" alt="Mohamed Yassine Marzouk">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>🎓 Parcours <span>Académique</span></h2>
+                <p>Mon parcours de formation</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date"><span>En cours</span></div>
+                    <div class="timeline-content card">
+                        <h3>Master en Leadership Managérial</h3>
+                        <h4>Université Abdelmalek Essaâdi – FSJES</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date"><span>2020 – 2024</span></div>
+                    <div class="timeline-content card">
+                        <h3>Licence en Sciences Économiques et Gestion</h3>
+                        <h4>Université Abdelmalek Essaâdi – FSJES Tétouan</h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date"><span>2018/2019</span></div>
+                    <div class="timeline-content card">
+                        <h3>Baccalauréat en Sciences de Gestion Comptable</h3>
+                        <h4>Lycée Charif Al Idrissi – Tétouan</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" style="background: var(--dark);">
+        <div class="container">
+            <div class="section-title">
+                <h2>💼 Expériences <span>Professionnelles</span></h2>
+                <p>Mon parcours professionnel</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date"><span>06/2024 – Présent</span></div>
+                    <div class="timeline-content card">
+                        <h3>Caissier & Contrôleur</h3>
+                        <h4>Banyan Tree Tamouda Bay</h4>
+                        <ul>
+                            <li>Gestion complète des transactions (espèces, cartes, clôtures)</li>
+                            <li>Remise des fonds au service financier</li>
+                            <li>Contrôle des commandes et suivi des sorties de stock</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date"><span>2019 – 2024</span></div>
+                    <div class="timeline-content card">
+                        <h3>Téléopérateur → Superviseur</h3>
+                        <h4>Konecta, Evoline, Fenixtel, Telemarketing</h4>
+                        <ul>
+                            <li>Traitement des demandes clients et résolution efficace</li>
+                            <li>Prospection et développement du portefeuille clients</li>
+                            <li>Management d'équipe et suivi des indicateurs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date"><span>Expérience</span></div>
+                    <div class="timeline-content card">
+                        <h3>Gestionnaire de Stock</h3>
+                        <h4>Aïn Soltan</h4>
+                        <ul>
+                            <li>Suivi et contrôle du stock</li>
+                            <li>Organisation des entrées/sorties et inventaires</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>🛠 Mes <span>Compétences</span></h2>
+                <p>Expertise professionnelle et technique</p>
+            </div>
+            <div class="skills-grid">
+                <div class="card skill-category">
+                    <h3><i class="fas fa-briefcase"></i> Compétences Professionnelles</h3>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Leadership & Supervision</span><span>90%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Relation Client</span><span>95%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Gestion du Stress</span><span>85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Travail en Équipe</span><span>90%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Technique de Vente</span><span>85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Gestion de Stock</span><span>80%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Compétences Informatiques</h3>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Microsoft Word</span><span>90%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Microsoft Excel</span><span>85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Microsoft PowerPoint</span><span>85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Navigation Internet</span><span>95%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Outils CRM</span><span>80%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Logiciels de Caisse</span><span>85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages" style="background: var(--dark);">
+        <div class="container">
+            <div class="section-title">
+                <h2>🌐 <span>Langues</span></h2>
+                <p>Compétences linguistiques</p>
+            </div>
+            <div class="languages-grid">
+                <div class="card language-card"><i class="fas fa-star"></i>
+                    <h4>Arabe</h4>
+                    <p>Langue maternelle</p>
+                </div>
+                <div class="card language-card"><i class="fas fa-comments"></i>
+                    <h4>Français</h4>
+                    <p>Lu, écrit, parlé</p>
+                </div>
+                <div class="card language-card"><i class="fas fa-globe-europe"></i>
+                    <h4>Espagnol</h4>
+                    <p>Lu, écrit, parlé</p>
+                </div>
+                <div class="card language-card"><i class="fas fa-globe-americas"></i>
+                    <h4>Anglais</h4>
+                    <p>Notions de base</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>📍 <span>Contact</span></h2>
+                <p>Restons en contact</p>
+            </div>
+            <div class="contact-grid">
+                <div class="card contact-item"><i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Adresse</h4>
+                        <p>15 Avenue Abou Inan, Ziâna, Tétouan</p>
+                    </div>
+                </div>
+                <div class="card contact-item"><i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Téléphone</h4>
+                        <p><a href="tel:+212647521053">+212 6 47 52 10 53</a></p>
+                    </div>
+                </div>
+                <div class="card contact-item"><i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:myassinemarzouk01@gmail.com">myassinemarzouk01@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Mohamed Yassine Marzouk. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Animate skills on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.skill-progress').forEach(bar => {
+                        bar.style.animation = 'skillFill 1.5s ease-out forwards';
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.skill-category').forEach(cat => observer.observe(cat));
+    </script>
+</body>
+
+</html>
