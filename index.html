@@ -28,12 +28,17 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--darker);
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* Animated Background */
@@ -43,7 +48,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
             background: radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
                 var(--darker);
@@ -53,45 +58,50 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Hero Section */
+        /* Hero Section - More Compact */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             align-items: center;
-            padding: 100px 0;
+            padding: 40px 0 30px 0;
             position: relative;
         }
 
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 40px;
             align-items: center;
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 10px;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.2;
         }
 
         .hero-text .subtitle {
-            font-size: 1.3rem;
+            font-size: 1rem;
             color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 500;
+            line-height: 1.4;
         }
 
         .hero-text p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
 
         .hero-buttons {
@@ -101,7 +111,7 @@
         }
 
         .btn {
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
@@ -109,6 +119,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            font-size: 0.95rem;
         }
 
         .btn-primary {
@@ -140,8 +151,8 @@
         }
 
         .profile-frame {
-            width: 350px;
-            height: 350px;
+            width: 300px;
+            height: 300px;
             border-radius: 30px;
             background: var(--gradient);
             padding: 5px;
@@ -158,31 +169,29 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: rotate(5deg) translateY(0);
             }
-
             50% {
                 transform: rotate(5deg) translateY(-20px);
             }
         }
 
-        /* Section Styles */
+        /* Section Styles - More Compact */
         section {
-            padding: 100px 0;
+            padding: 40px 0;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .section-title span {
@@ -194,19 +203,21 @@
 
         .section-title p {
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         /* Cards */
         .card {
             background: var(--card);
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             transition: all 0.4s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            height: 100%;
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             background: var(--card-hover);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
@@ -214,18 +225,19 @@
         /* Education & Experience */
         .timeline {
             position: relative;
+            display: grid;
+            gap: 20px;
         }
 
         .timeline-item {
             display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: 180px 1fr;
+            gap: 20px;
         }
 
         .timeline-date {
             text-align: right;
-            padding-right: 30px;
+            padding-right: 25px;
             border-right: 3px solid var(--primary);
             position: relative;
         }
@@ -244,10 +256,11 @@
         .timeline-date span {
             color: var(--accent);
             font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .timeline-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 5px;
         }
 
@@ -255,11 +268,13 @@
             color: var(--text-muted);
             font-weight: 400;
             margin-bottom: 10px;
+            font-size: 0.95rem;
         }
 
         .timeline-content ul {
             padding-left: 20px;
             color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         .timeline-content li {
@@ -270,39 +285,41 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 25px;
         }
 
         .skill-category h3 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .skill-category h3 i {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             background: var(--gradient);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1rem;
         }
 
         .skill-item {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .skill-item .skill-header {
             display: flex;
             justify-content: space-between;
             margin-bottom: 8px;
+            font-size: 0.9rem;
         }
 
         .skill-bar {
-            height: 10px;
+            height: 8px;
             background: var(--dark);
             border-radius: 10px;
             overflow: hidden;
@@ -325,28 +342,29 @@
         /* Languages */
         .languages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
         }
 
         .language-card {
             text-align: center;
-            padding: 30px;
+            padding: 25px;
         }
 
         .language-card i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 12px;
             color: var(--accent);
         }
 
         .language-card h4 {
             margin-bottom: 5px;
+            font-size: 1rem;
         }
 
         .language-card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         /* Contact */
@@ -360,28 +378,30 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            padding: 25px;
+            padding: 20px;
         }
 
         .contact-item i {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--gradient);
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
 
         .contact-item h4 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             margin-bottom: 5px;
         }
 
         .contact-item p {
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .contact-item a {
@@ -396,20 +416,35 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 40px 0;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 30px;
             }
 
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .hero-text p {
+                font-size: 0.9rem;
             }
 
             .hero-buttons {
@@ -417,8 +452,8 @@
             }
 
             .profile-frame {
-                width: 280px;
-                height: 280px;
+                width: 250px;
+                height: 250px;
             }
 
             .timeline-item {
@@ -437,6 +472,18 @@
                 left: -9px;
                 right: auto;
             }
+
+            section {
+                padding: 40px 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -450,10 +497,8 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Mohamed Yassine Marzouk</h1>
-                    <p class="subtitle">🎓 Master en Leadership Managérial</p>
-                    <p>Licencié en économie et gestion, motivé et orienté résultats. Je recherche une opportunité
-                        professionnelle permettant de développer mes compétences et contribuer efficacement au sein
-                        d'une organisation dynamique.</p>
+                    <p class="subtitle">Junior Management & Digital Transformation | Leadership Managérial | Performance & IA pour Managers</p>
+                    <p>Étudiant en deuxième année Master en Leadership Managérial, Licencié en économie et gestion, motivé et orienté résultats. Je recherche un stage ou opportunité professionnelle permettant de développer mes compétences au niveau de management, la transformation digitale et l'automatisation des processus, l'amélioration de la performance, la prise de décision grâce aux outils digitaux et à l'intelligence artificielle au sein d'une organisation dynamique.</p>
                     <div class="hero-buttons">
                         <a href="mailto:myassinemarzouk01@gmail.com" class="btn btn-primary"><i
                                 class="fas fa-envelope"></i> Contact</a>
@@ -560,37 +605,43 @@
                 <div class="card skill-category">
                     <h3><i class="fas fa-briefcase"></i> Compétences Professionnelles</h3>
                     <div class="skill-item">
-                        <div class="skill-header"><span>Leadership & Supervision</span><span>90%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="--progress: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header"><span>Relation Client</span><span>95%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="--progress: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header"><span>Gestion du Stress</span><span>85%</span></div>
+                        <div class="skill-header"><span>Management</span><span>85%</span></div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="--progress: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-header"><span>Travail en Équipe</span><span>90%</span></div>
+                        <div class="skill-header"><span>Leadership</span><span>90%</span></div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="--progress: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-header"><span>Technique de Vente</span><span>85%</span></div>
+                        <div class="skill-header"><span>Transformation numérique</span><span>85%</span></div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="--progress: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-header"><span>Gestion de Stock</span><span>80%</span></div>
+                        <div class="skill-header"><span>Gestion de projet</span><span>88%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Conduite du changement</span><span>82%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 82%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Analyse des performances</span><span>87%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--progress: 87%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header"><span>Intelligence artificielle pour managers</span><span>80%</span></div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="--progress: 80%"></div>
                         </div>
@@ -605,7 +656,7 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-header"><span>Microsoft Excel</span><span>85%</span></div>
+                        <div class="skill-header"><span>Excel avancé</span><span>85%</span></div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="--progress: 85%"></div>
                         </div>
@@ -617,7 +668,7 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-header"><span>Navigation Internet</span><span>95%</span></div>
+                        <div class="skill-header"><span>Power BI</span><span>95%</span></div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="--progress: 95%"></div>
                         </div>
@@ -629,7 +680,7 @@
                         </div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-header"><span>Logiciels de Caisse</span><span>85%</span></div>
+                        <div class="skill-header"><span>Notion / Trello / Zapier / MIRO</span><span>85%</span></div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="--progress: 85%"></div>
                         </div>
@@ -715,6 +766,5 @@
         document.querySelectorAll('.skill-category').forEach(cat => observer.observe(cat));
     </script>
 </body>
-
 
 </html>
